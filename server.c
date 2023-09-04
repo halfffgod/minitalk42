@@ -64,12 +64,16 @@ int	main(void)
 	p = ft_itoa(pid);
 	ft_putstr_fd("PID: ", 1);
 	ft_putstr_fd(p, 1);
+	free(p);
 	write(1, "\n", 1);
+	//signal(SIGUSR1, sig);
+	//signal(SIGUSR2, sig);
 	while (1)
 	{
 		signal(SIGUSR1, sig);
 		signal(SIGUSR2, sig);
 		pause();
 	}
+	system("leaks server");
 	return (0);
 }

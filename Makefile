@@ -19,10 +19,10 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME_CLIENT) $(NAME_SERVER)
 
 $(NAME_SERVER): $(LIBFT)
-	$(CC) $(CFLAGS) $(SRC_SERVER) $(LIBFT) $(INC) -o server
+	@$(CC) $(CFLAGS) $(SRC_SERVER) $(LIBFT) $(INC) -o server
 
 $(NAME_CLIENT): $(LIBFT)
-	$(CC) $(CFLAGS) $(SRC_CLIENT) $(LIBFT) $(INC) -o client
+	@$(CC) $(CFLAGS) $(SRC_CLIENT) $(LIBFT) $(INC) -o client
 
 $(LIBFT):
 	$(MAKE) -C ./libft

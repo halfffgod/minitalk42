@@ -36,9 +36,15 @@ int	main(int ac, char **av)
 
 	i = 0;
 	if (ac < 3)
+	{
 		ft_putstr_fd(PIDERROR, 1);
+		exit(1);
+	}
 	if (ac > 3)
+	{
 		ft_putstr_fd(ARGERROR, 1);
+		exit(1);
+	}
 	pid = ft_atoi(av[1]);
 	while (av[2][i])
 	{
