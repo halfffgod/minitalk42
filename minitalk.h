@@ -19,14 +19,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <signal.h>
-# include "./libft/libft.h"
 
-/*size_t	ft_strlen(const char *str);
-int		ft_atoi(const	char *str);
+size_t	ft_strlen(const char *str);
+int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(const char *s1);
-char	*ft_strjoin(char const *s1, char const *s2);*/
+char	*ft_strjoin(char const *s1, char const *s2);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif

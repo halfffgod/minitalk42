@@ -1,37 +1,33 @@
-SRC_SERVER = server.c
-SRC_CLIENT = client.c
-INC		=	-I. -I$(LIBFT_DIR)
+NAME1    = server
+NAME2    = client
+SRCS1    = server.c libft_utils_1.c libft_utils_2.c
+SRCS2    = client.c libft_utils_1.c libft_utils_2.c
+OBJS1    = server.o libft_utils_1.o libft_utils_2.o
+OBJS2    = client.o libft_utils_1.o libft_utils_2.o
+CC        = cc
+CFLAGS    = -Wall -Wextra -Werror #-g3 -fsanitize=address
+RM        = rm -f
 
-LIBFT		=	./libft/libft.a
-LIBFT_DIR	=	./libft
+%.o:%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-NAME_SERVER = server
-NAME_CLIENT = client
 
-OBJ_SERVER = server.o
-OBJ_CLIENT = client.o
-#OBJ_SERVER = $(patsubst %.c, %.o, $(SRC_SERVER))
-#OBJ_CLIENT = $(patsubst %.c, %.o, $(SRC_CLIENT))
+all:$(NAME1) $(NAME2)
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+$(NAME1):$(OBJS1)
+		$(CC) $(CFLAGS) -o $(NAME1) $(OBJS1)
 
-all: $(NAME_CLIENT) $(NAME_SERVER)
-
-$(NAME_SERVER): $(LIBFT)
-	@$(CC) $(CFLAGS) $(SRC_SERVER) $(LIBFT) $(INC) -o server
-
-$(NAME_CLIENT): $(LIBFT)
-	@$(CC) $(CFLAGS) $(SRC_CLIENT) $(LIBFT) $(INC) -o client
-
-$(LIBFT):
-	$(MAKE) -C ./libft
+$(NAME2):$(OBJS2)
+		$(CC) $(CFLAGS) -o $(NAME2) $(OBJS2)
 
 clean:
-	rm -f $(OBJ_SERVER) $(OBJ_CLIENT)
-fclean: clean
-	$(MAKE) fclean -C $(LIBFT_DIR)
-	rm -f $(NAME_CLIENT) $(NAME_SERVER)
-re: fclean all
+		$(RM) $(OBJS1)
+		$(RM) $(OBJS2)
 
-.PHONY: server client all re fclean  clean
+fclean :    clean
+		$(RM) $(NAME1)
+		$(RM) $(NAME2)
+
+re        :fclean all
+
+.PHONY: all clean fclean re
