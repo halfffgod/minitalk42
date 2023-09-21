@@ -29,17 +29,13 @@ void	bi_to_dec(char *bits)
 		i++;
 	}
 	c = num + 0;
-	//if (c == '\0')
-	//	printf("\nstrex\n");  // poxel
-	//else
-		write(1, &c, 1);
+	write(1, &c, 1);
 }
 
 void	sig(int signal)
 {
 	static int	c;
 	static char	*bits;
-	char *tmp_ptr;
 
 	if (bits == NULL)
 	{
@@ -47,20 +43,11 @@ void	sig(int signal)
 		c = 1;
 	}
 	if (signal == SIGUSR1)
-	{
-		tmp_ptr = bits;
 		bits = ft_strjoin(bits, "0");
-		free(tmp_ptr);
-	}
 	else
-	{
-		tmp_ptr = bits;
 		bits = ft_strjoin(bits, "1");
-		free(tmp_ptr);
-	}
 	if (c == 8)
 	{
-
 		bi_to_dec(bits);
 		free(bits);
 		bits = NULL;
@@ -82,8 +69,6 @@ int	main(void)
 	signal(SIGUSR1, sig);
 	signal(SIGUSR2, sig);
 	while (1)
-	{
 		pause();
-	}
 	return (0);
 }

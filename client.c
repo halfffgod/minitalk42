@@ -25,7 +25,7 @@ void	sending(int pid, char c)
 			kill(pid, SIGUSR1);
 		else if (bit == 1)
 			kill(pid, SIGUSR2);
-		usleep(200);
+		usleep(500);
 	}
 }
 
@@ -51,7 +51,6 @@ int	main(int ac, char **av)
 		sending(pid, av[2][i]);
 		i++;
 	}
-
-	//sending(pid, '\0');
+	write(1, "the message is sent", 19);
 	return (0);
 }

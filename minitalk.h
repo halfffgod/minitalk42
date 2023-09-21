@@ -26,7 +26,7 @@ char	*ft_itoa(int n);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(const char *s1);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 void	ft_putnbr_fd(int n, int fd);
 
 #endif
